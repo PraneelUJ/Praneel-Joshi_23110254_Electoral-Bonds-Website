@@ -4,13 +4,20 @@ a. Create a database named 'electionbonddcc' in SQL.
 
 2. Upload two CSV files, 'individual.csv' and 'party.csv', as tables with names "Purchase_Details"  and "Redemption_Details" in the database.
 
-3. Setup Flask Application:
-4. Open a terminal and install Flask and Flask-MySQLdb using pip: pip install Flask Flask-MySQLdb.
-5. Open the python.py file and write your MySQL password.
-6. Run the Flask Application:
-7. Run the python.py file.
-8. The website will be live on localhost.
-9. Visit the link displayed in the terminal to open the website.
+3. Create a user in SQL using the command below. CREATE USER 'testing'@'%' IDENTIFIED BY 'password'; GRANT ALL PRIVILEGES ON . TO 'testing'@'%' WITH GRANT OPTION; 
+
+4. Setup Flask Application:
+
+5. Open a terminal and install Flask and Flask-MySQLdb using pip: pip install Flask Flask-MySQLdb.
+
+6. Open the python.py file and write your MySQL password.
+
+7. Run the Flask Application:
+
+8. Run the python.py file.
+
+9. The website will be live on localhost.
+10. Visit the link displayed in the terminal to open the website.
 
 Q1
 
