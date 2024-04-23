@@ -1,0 +1,1 @@
+Select Purchase_Details.Denominations,`Name of the Purchaser` from  Purchase_Details inner join Redemption_Details where Redemption_Details.`Bond Number`= Purchase_Details.`Bond Number` and Purchase_Details.Prefix = Redemption_Details.Prefix and Redemption_Details.`Name of the Political Party`=%s",(par,))

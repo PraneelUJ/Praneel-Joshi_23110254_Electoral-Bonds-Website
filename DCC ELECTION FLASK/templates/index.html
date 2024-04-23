@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>HOME PAGE</title>
+    </head>
+    <body>
+        <form action ="/home" method="post">
+            <p> Q1 Bond Number:</p>
+            <p><input type="Number" name="nm"/></p>
+            <p><input type="submit" value="Submit"></p>
+        </form>
+        <form action="/Q2" method ="post">
+            <p> Q2 Select Bond Purchaser</p>
+            <select name="buyer">
+                {%for i in purchaser%}
+                     <option value="{{i}}">{{i}}</option>
+                {%endfor%}
+            </select>
+            <p><input type="submit" value="Submit"></p>
+        </form>
+    </body>
+    <form action="/Q3" method ="post">
+        <p> Q3 Select Political Party</p>
+        <select name="party">
+            {%for i in party%}
+                 <option value="{{i}}">{{i}}</option>
+            {%endfor%}
+        </select>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+    <form action="/Q4" method ="post">
+        <p> Q4 Select Political Party</p>
+        <select name="party">
+            {%for i in party%}
+                 <option value="{{i}}">{{i}}</option>
+            {%endfor%}
+        </select>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+    <form action="/Q5" method ="post">
+        <p> Q5 Select Bond Purchaser</p>
+        <select name="buyer">
+            {%for i in purchaser%}
+                 <option value="{{i}}">{{i}}</option>
+            {%endfor%}
+        </select>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+    <form action ="/Q6" method =post>
+        <p> Q6 Click submit to view the Pie Chart</p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+    <form action="/Extra" method ="post">
+        <p> ///Select company to show it gives money to which Parties///</p>
+        <select name="buyer">
+            {%for i in purchaser%}
+                 <option value="{{i}}">{{i}}</option>
+            {%endfor%}
+        </select>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+</body>
+
+<html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Display</title>
+</head>
+<body>
+    <div>
+        <p> Total Amount Donated is:</p>
+        <p>Rs {{total}}</p>
+        <p>         </p>
+        <p>         </p>
+      <table border="2">
+            <tr>Name of Purchaser</tr>
+            <tr> Amount Donated</tr>
+            {% for i in person %}
+            <tr>
+                {% for cell in i %}
+                    <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
