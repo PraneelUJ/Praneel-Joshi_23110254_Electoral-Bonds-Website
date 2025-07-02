@@ -1,63 +1,153 @@
-<html>
-    <head>
-        <title>HOME PAGE</title>
-    </head>
-    <body>
-        <form action ="/home" method="post">
-            <p> Q1 Bond Number:</p>
-            <p><input type="Number" name="nm"/></p>
-            <p><input type="submit" value="Submit"></p>
-        </form>
-        <form action="/Q2" method ="post">
-            <p> Q2 Select Bond Purchaser</p>
-            <select name="buyer">
-                {%for i in purchaser%}
-                     <option value="{{i}}">{{i}}</option>
-                {%endfor%}
-            </select>
-            <p><input type="submit" value="Submit"></p>
-        </form>
-    </body>
-    <form action="/Q3" method ="post">
-        <p> Q3 Select Political Party</p>
-        <select name="party">
-            {%for i in party%}
-                 <option value="{{i}}">{{i}}</option>
-            {%endfor%}
-        </select>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-    <form action="/Q4" method ="post">
-        <p> Q4 Select Political Party</p>
-        <select name="party">
-            {%for i in party%}
-                 <option value="{{i}}">{{i}}</option>
-            {%endfor%}
-        </select>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-    <form action="/Q5" method ="post">
-        <p> Q5 Select Bond Purchaser</p>
-        <select name="buyer">
-            {%for i in purchaser%}
-                 <option value="{{i}}">{{i}}</option>
-            {%endfor%}
-        </select>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-    <form action ="/Q6" method =post>
-        <p> Q6 Click submit to view the Pie Chart</p>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-    <form action="/Extra" method ="post">
-        <p> ///Select company to show it gives money to which Parties///</p>
-        <select name="buyer">
-            {%for i in purchaser%}
-                 <option value="{{i}}">{{i}}</option>
-            {%endfor%}
-        </select>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME PAGE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<html>
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+        }
+        .form-card {
+            max-width: 600px;
+            margin: auto;
+        }
+        select.form-select {
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <h2 class="text-center mb-5">DCC Election Dashboard</h2>
+
+    <!-- Q1 -->
+    <div class="card mb-4 form-card">
+        <div class="card-body">
+            <form action="/home" method="post">
+                <div class="mb-3 text-center">
+                    <label class="form-label">Q1: Bond Number</label>
+                    <input type="number" name="nm" class="form-control mx-auto" placeholder="Enter bond number" required style="max-width: 300px;">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="card mb-4 form-card">
+        <div class="card-body">
+            <form action="/Q2" method="post">
+                <div class="mb-3 text-center">
+                    <label class="form-label">Q2: Select Bond Purchaser</label>
+                    <select name="buyer" class="form-select mx-auto">
+                        {% for i in purchaser %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="card mb-4 form-card">
+        <div class="card-body">
+            <form action="/Q3" method="post">
+                <div class="mb-3 text-center">
+                    <label class="form-label">Q3: Select Political Party</label>
+                    <select name="party" class="form-select mx-auto">
+                        {% for i in party %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="card mb-4 form-card">
+        <div class="card-body">
+            <form action="/Q4" method="post">
+                <div class="mb-3 text-center">
+                    <label class="form-label">Q4: Select Political Party</label>
+                    <select name="party" class="form-select mx-auto">
+                        {% for i in party %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="card mb-4 form-card">
+        <div class="card-body">
+            <form action="/Q5" method="post">
+                <div class="mb-3 text-center">
+                    <label class="form-label">Q5: Select Bond Purchaser</label>
+                    <select name="buyer" class="form-select mx-auto">
+                        {% for i in purchaser %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="card mb-4 form-card">
+        <div class="card-body">
+            <form action="/Q6" method="post">
+                <div class="text-center mb-3">
+                    <label class="form-label">Q6: Click submit to view the Pie Chart</label>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Extra -->
+    <div class="card mb-4 form-card">
+        <div class="card-body">
+            <form action="/Extra" method="post">
+                <div class="mb-3 text-center">
+                    <label class="form-label">Select company to show which parties it funds</label>
+                    <select name="buyer" class="form-select mx-auto">
+                        {% for i in purchaser %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div> <!-- end container -->
+
+</body>
+</html>
