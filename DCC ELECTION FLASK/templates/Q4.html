@@ -1,25 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Data Display</title>
-</head>
-<body>
-    <div>
-        <p> Total Amount Donated is:</p>
-        <p>Rs {{total}}</p>
-        <p>         </p>
-        <p>         </p>
-      <table border="2">
-            <tr>Name of Purchaser</tr>
-            <tr> Amount Donated</tr>
-            {% for i in person %}
-            <tr>
-                {% for cell in i %}
-                    <td>{{ cell }}</td>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+        min-height: 100vh;
+      }
+
+      .form-card {
+        max-width: 90%;
+        margin: 40px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <h2>Data displaying amount given by companies/individuals</h2>
+      <div style="margin-left: auto; margin-right: 0; width: fit-content">
+        <a
+          href="/"
+          style="
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: blue;
+          "
+        >
+          Home
+        </a>
+      </div>
+
+      <div class="card form-card shadow">
+        <div class="card-body">
+          <h2>Total Amount Donated:</h2>
+          <h3>Rs {{ total }}</h3>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-bordered table-dark text-center">
+              <thead>
+                <tr>
+                  <th style="font-family: Arial, Helvetica, sans-serif">
+                    Name of Purchaser
+                  </th>
+                  <th style="font-family: Arial, Helvetica, sans-serif">
+                    Amount Donated
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in person %}
+                <tr>
+                  {% for cell in i %}
+                  <td>{{ cell }}</td>
+                  {% endfor %}
+                </tr>
                 {% endfor %}
-            </tr>
-            {% endfor %}
-        </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

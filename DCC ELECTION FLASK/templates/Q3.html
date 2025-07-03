@@ -1,93 +1,194 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-    <title>Data Display</title>
-</head>
-<body>
-    <div>
-        <canvas id = "mychart"></canvas>
-    </div>
-    <script>
-        let labels=year;
-        let da=money;
-        const data ={
-            [{
-                labels: labels,
-                data : da,
-                backgroundColor: "rgb(66,221,245)"
-            }]
-        };
-        const config ={
-            type: 'bar',
-            data: data,
-        };
-        const chart=new Chart(
-            document.getElementById('mychart'),
-            config
-        );
-    </script>
-</body>
-</html>-->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Data Display</title>
-</head>
-<body>
-    <table border="2">
-        <tr>
-                <th> MONEY</th>
-                <th> YEAR </th>
-        </tr>
-        {% for row in range(money|length) %}
-        <tr>
-            
-                <td>{{ money[row] }} </td> <td>{{year[row]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
+  <head>
+    <title>Data Displaying Money received by each party every year</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+        min-height: 100vh;
+      }
+
+      .form-card {
+        max-width: 90%;
+        margin: 40px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div style="margin-left: auto; margin-right: 0; width: fit-content">
+        <a
+          href="/"
+          style="
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: blue;
+          "
+        >
+          Home
+        </a>
+      </div>
+      <div class="card form-card shadow">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-dark text-center">
+              <thead>
+                <tr>
+                  <th style="font-family: Arial, Helvetica, sans-serif">
+                    Money (in ₹)
+                  </th>
+                  <th style="font-family: Arial, Helvetica, sans-serif">
+                    Year (20XX)
+                  </th>
+                </tr>
+              </thead>
+              {% for row in range(money|length) %}
+              <tr>
+                <td>{{ money[row] }}</td>
+                <td>{{year[row]}}</td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <div>
-        <canvas id="mychart"></canvas>
+      <canvas id="mychart"></canvas>
     </div>
     <script>
-        var label = ['2019', '2020', '2021', '2022', '2023', '2024'];
-        var da = {{money|tojson}}; 
+      var label = ['2019', '2020', '2021', '2022', '2023', '2024'];
+      var da = {{money|tojson}};
 
-        const data = {
-            labels: {{year|tojson}},
-            datasets: [{
-                label: "Amount of Money",
-                data: da,
-                backgroundColor: ["rgb(66,221,245)", "rgb(0,221,245)", "rgb(66,0,245)", "rgb(66,221,24)", "rgb(66,21,245)", "rgb(6,221,245)"]
-                
-            }]
+      const data = {
+          labels: {{year|tojson}},
+          datasets: [{
+              data: da,
+              backgroundColor: ["rgb(66,0,245)","rgb(66,221,245)", "rgb(0,221,245)",  "rgb(66,221,24)", "rgb(66,221,245)", "rgb(66,221,245)"],
+              label: "Money (in ₹)",
+                  borderWidth:1,
+                  borderRadius:10,
+                  barThickness:40,
 
-        };
+          }]
+
+      };
 
 
-        const config = {
-            type: 'bar',
-            data: data,
-        };
+     const config = {
+        type: 'bar',
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              labels: {
+                color: '#000',
+                font: {
+                  family: 'Arial',
+                  weight: 'bold'
+                }
+              }
+            },
+            title: {
+              display: true,
+              text: 'Annual Money Overview',
+              font: {
+                size: 20,
+                family: 'Arial',
+                weight: 'bold'
+              },
+              color: '#333'
+            },
+            tooltip: {
+              backgroundColor: '#fff',
+              titleColor: '#333',
+              bodyColor: '#555',
+              borderColor: '#ccc',
+              borderWidth: 1
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Year (20XX)',
+                color: '#333',
+                font: {
+                  weight: 'bold'
+                }
+              },
+              ticks: {
+                color: '#000'
+              },
+              grid: {
+                display: false
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Money (in ₹)',
+                color: '#333',
+                font: {
+                  weight: 'bold'
+                }
+              },
+              ticks: {
+                color: '#000'
+              },
+              grid: {
+                color: 'rgba(0,0,0,0.05)'
+              }
+            }
+          }
+        }
+      };
 
-        const chart = new Chart(
-            document.getElementById('mychart'),
-            config
-        );
+      const chart = new Chart(
+          document.getElementById('mychart'),
+          config
+      );
     </script>
-    <button onclick="downloadCanvas()">DOWNLOAD IMAGE</button>
+    <button
+      onclick="downloadCanvas()"
+      style="
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: brown;
+        justify-content: center;
+        display: center;
+      "
+    >
+      Download Graph
+    </button>
     <script>
-    function downloadCanvas(){
-        var canvas=document.getElementById("mychart");
-        var image=canvas.toDataURL("image/png").replace("image/png","image/octet-stream");
-        var link=document.createElement('a');
-        link.download='chart.png';
-        link.href=image;
+      function downloadCanvas() {
+        var canvas = document.getElementById("mychart");
+        var image = canvas
+          .toDataURL("image/png")
+          .replace("image/png", "image/octet-stream");
+        var link = document.createElement("a");
+        link.download = "chart.png";
+        link.href = image;
         link.click();
-    }
+      }
     </script>
-</body>
+  </body>
 </html>
-
